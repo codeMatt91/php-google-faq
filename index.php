@@ -17,6 +17,11 @@ Inserire le voci di menu dell'header tramite un array di PHP (i link non devono 
 
 */
 
+$navs = [
+
+   'Introduzione', 'Norme sulla privacy', 'Termini di servizio', 'Tecnologie', 'Domande frequenti'
+];
+
 $faqs = [
    [
       'title' => "Come state implementando la recente decisione della Corte di giustizia dell'Unione europea (CGUE) relativa al diritto all'oblio?",
@@ -41,10 +46,15 @@ $faqs = [
       'title' => "Perché il mio account è associato a un paese?",
       'paragraphs' => [
          "Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:",
-         "La società consociata Google che offre i servizi, tratta le tue informazioni ed è responsabile del rispetto delle leggi sulla privacy vigenti. Generalmente Google offre i propri servizi per i consumatori tramite una delle due società seguenti:",
-         "Google Ireland Limited, se gli utenti sono residenti nello Spazio economico europeo (paesi dell'Unione europea, oltre a Islanda, Liechtenstein e Norvegia) o in Svizzera.",
-         "Google LLC, con sede negli Stati Uniti, per il resto del mondo.",
-         "La versione dei termini che regola il nostro rapporto, che può variare in base alle leggi locali.",
+         "
+         <ol>
+         <li>La società consociata Google che offre i servizi, tratta le tue informazioni ed è responsabile del rispetto delle leggi sulla privacy vigenti. Generalmente Google offre i propri servizi per i consumatori tramite una delle due società seguenti:</li>
+         <ul>
+         <li>Google Ireland Limited, se gli utenti sono residenti nello Spazio economico europeo (paesi dell'Unione europea, oltre a Islanda, Liechtenstein e Norvegia) o in Svizzera.</li>
+         <li>Google LLC, con sede negli Stati Uniti, per il resto del mondo.</li>
+         </ul>
+         <li>La versione dei termini che regola il nostro rapporto, che può variare in base alle leggi locali.</li>
+         </ol>",
          "Tieni presente che i servizi Google sono fondamentalmente gli stessi a prescindere dalla società consociata che li offre o dal paese a cui è associato il tuo account."
       ]
    ],
@@ -75,11 +85,19 @@ $faqs = [
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="style.css">
    <title>Google privacy and term</title>
 </head>
 
 <body>
    <div class="container-sm">
+      <header class="my-4 ">
+         <ul class="d-flex p-0 list-unstyled">
+            <?php for ($i = 0; $i < count($navs); $i++) : ?>
+               <li class="mx-3 <?php  ?>"><?php echo $navs[$i] ?></li>
+            <?php endfor; ?>
+         </ul>
+      </header>
       <?php foreach ($faqs as $faq) : ?>
          <div class="my-5">
             <h1><?= $faq['title'] ?></h1>
