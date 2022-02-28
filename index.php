@@ -79,6 +79,11 @@ $faqs = [
       <?php foreach ($faqs as $faq) : ?>
          <div class="my-4">
             <h1><?= $faq['title'] ?></h1>
+            <?php foreach ($faq['paragraphs'] as $paragraph) : ?>
+               <div class="my-2">
+                  <?php echo $paragraph ?>
+               </div>
+            <?php endforeach; ?>
          </div>
       <?php endforeach; ?>
    </div>
